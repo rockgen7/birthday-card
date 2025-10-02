@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Birthday AR Card</title>
+    <!-- A-Frame（3D空間を作るライブラリ） -->
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <!-- AR.js（マーカー認識用ライブラリ） -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.1/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- 3D空間を表示するシーン -->
+    <a-scene embedded arjs="sourceType: webcam;">
+
+      <!-- マーカーを検出したら中のオブジェクトを表示 -->
+      <!-- 自作マーカーを使う場合は marker.patt を自分のファイルに置き換える -->
+      <a-marker type="pattern" url="marker.patt">
+
+        <!-- 3Dモデル（cake.glb）を読み込み -->
+        <!-- scale で大きさ、position で位置調整 -->
+        <a-entity gltf-model="cake.glb" 
+                  scale="0.5 0.5 0.5" 
+                  position="0 0 0"
+                  animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+        </a-entity>
+
+      </a-marker>
+
+      <!-- カメラ -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
